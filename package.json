@@ -1,0 +1,19 @@
+{
+  "name": "timart-backend-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.ts",
+  "scripts": {
+    "start": "ts-node server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^3.12.1",
+    "express": "^4.18.2",
+    "graphql": "^16.8.1",
+    "mysql2": "^3.6.2",
+    "sequelize-typescript": "^2.1.5"
+  }
+}
