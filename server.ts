@@ -7,7 +7,10 @@ const app = express();
 
 const server = new ApolloServer({
     typeDefs: schema,
-    resolvers
+    resolvers,
+    formatError(error) {
+        return { message: 'Internal server error', error }
+    }
 });
 
 async function runApollo() {
@@ -23,5 +26,6 @@ const PORT = process.env.PORT || 7000;
 sequelize.sync().then(() => {
     app.listen(PORT, () => {
         console.log(`Server running on http://localhost:${PORT}/graphql`);
+        console.log('Database is also running')
     });
 });
