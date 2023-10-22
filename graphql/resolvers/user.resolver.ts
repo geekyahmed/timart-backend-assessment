@@ -49,6 +49,15 @@ export const resolvers = {
             return User.create({ username, email } as User);
         },
         createOrder: async (_, { name, user_id, total_amount, order_date }: OrderInterface) => {
+            const user = await User.findByPk(user_id)
+
+            if (!user)
+                throw new GraphQLError("User bearing this id does not exist", {
+                    extensions: {
+                        code: 'USER_NOT_FOUND'
+                    }
+                })
+                
             return Order.create({ name, user_id, total_amount, order_date: new Date(order_date) } as Order);
         },
     },

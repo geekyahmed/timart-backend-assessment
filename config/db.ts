@@ -5,7 +5,7 @@ const sequelize = new Sequelize({
     host: 'localhost',
     database: 'tmart_db',
     username: 'root',
-    password: 'depressed@2004',
+    password: 'newpass',
     dialect: 'mysql',
     models: [User, Order]
 });
