@@ -37,9 +37,9 @@ export const resolvers = {
     },
     Mutation: {
         createUser: async (_, { username, email }: UserInterface) => {
-            const emailExists = await User.findOne({ where: { email } })
+            const hasExistingEmail = await User.findOne({ where: { email } })
 
-            if (emailExists)
+            if (hasExistingEmail)
                 throw new GraphQLError("Email already exists! Try another email", {
                     extensions: {
                         code: 'EMAIL_ALREADY_EXISTS'
@@ -57,7 +57,7 @@ export const resolvers = {
                         code: 'USER_NOT_FOUND'
                     }
                 })
-                
+
             return Order.create({ name, user_id, total_amount, order_date: new Date(order_date) } as Order);
         },
     },
